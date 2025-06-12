@@ -1,0 +1,108 @@
+ body {
+            background-color: azure;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            box-sizing: border-box;
+             position: relative;
+             z-index: 1;
+             overflow: hidden;
+        }
+
+        .login-box {
+            position: relative;
+            width: 350px;
+            padding: 40px 30px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .formagic2, .formagic23,.formagic22,.formagic24 {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: rgba(0, 0, 255, 0.2);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .formagic2 {
+            top: 0;
+            left: 20%;
+            animation: bubbleUpDown 4s ease-in-out infinite;
+        }
+
+        .formagic22 {
+            top: 0;
+            right: 20%;
+            animation: bubbleUpDown2 5s ease-in-out infinite;
+        }
+          .formagic23 {
+            top:50%;
+            right: 0%;
+            animation: parvej2 5s ease-in-out infinite;
+        }
+  .formagic24 {
+           top: 50%;
+          left: 0%;
+            animation: parvej 5s ease-in-out infinite;
+        }
+@keyframes parvej2 {
+            0% { transform: translateX(0); }
+            80% { transform: translateX(-610px); }
+            100% { transform: translatX(0); }
+        }
+
+ @keyframes parvej {
+            0% { transform: translateX(0); }
+            80% { transform: translateX(610px); }
+            100% { transform: translatX(0); }
+        }
+
+
+
+        @keyframes bubbleUpDown {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(150px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes bubbleUpDown2 {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(120px); }
+            100% { transform: translateY(0); }
+        }
+
+        .inputp {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #007bff;
+            width: 100%;
+        }
+
+        .login-btn {
+            background-color: #ff0033;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            width: 100%;
+            transition: background-co lor 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #0011ff;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+   
