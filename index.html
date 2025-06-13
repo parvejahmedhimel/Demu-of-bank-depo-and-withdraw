@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="style.css">
       
 </head>
-<body>
+<!-- this is login area  -->
+<body> <div id="login-con">
 <div class="formagic22"></div>
 <div class="formagic23"></div>
 <div class="formagic2"></div>
@@ -22,8 +23,210 @@
         <input type="text" class="inputp" placeholder="Enter Your Name">
         <input type="email" class="inputp" placeholder="Enter Your Email">
         <input type="password" class="inputp" placeholder="Enter Your Password">
-        <button class="login-btn">Login</button>
+        <button    id="login-btn-m" class="login-btn">Login</button>
+    </div>
     </div>
 
+
+
+<!-- this the depposit and others are of this bank  -->
+    <div id="deposit-area">
+<!-- balance Area all  -->
+ <div>
+    <h3 class="h3f">This is Your Account Infoormation</h3>
+ </div>
+<div class="manager1">
+
+<!-- deposit  -->
+<div class="section">
+    <h5>Deposit</h5>
+<h2>$ <span id="deposit-amount">00
+</span></h2>
+</div>
+<!-- withdraw -->
+<div class="section">
+    <h5>Withdraw</h5>
+<h2>$ <span id="withdraw-amount">00
+</span></h2>
+</div>
+
+
+<div class="section">
+    <h5>Balance</h5>
+<h2>$ <span id="balance-amount">400
+</span></h2>
+</div>
+</div>
+
+<!-- This is the main Input Area -->
+<div class="manager2">
+
+<!-- this for input deposit  -->
+  <div class="section1">
+
+<input required class="inputp" type="number" name="" id="input-deposit"><br>
+<button onclick="showpopup()"  class="login-btn " id="deposit-btn">Deposit</button>
+  </div>
+
+<!-- this for output of wudthraw -->
+
+  <div class="section2">
+
+<input  required class="inputp" type="number" name="" id="input-withdraw"><br>
+<button  onclick="showpopup()"  class="login-btn2 " id="withdraw-btn">Withdraw</button>
+  </div>
+  </div>
+
+
+
+
+</div>
+
+ <!-- Popup structure -->
+  <div class="popup" id="popupBox">
+    <div class="popup-content">
+      <h2 id="popupText">Deposited Successfully!</h2>
+      <div id="extraContent"></div>
+      <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+
+    </div>
+
+    <script>
+// login button click to deposit area showing 
+const first = document.getElementById("login-btn-m"); 
+
+first.addEventListener("click", function () {
+    const loginMain =document.getElementById("login-con");
+    loginMain.style.display ="none" ;
+
+    const depositArea=document.getElementById("deposit-area");
+    depositArea.style.display="block";
+})
+
+// this is the deposit main Works follow bro
+
+// 1st our deposit works follow
+
+const deposit =document.getElementById("deposit-btn"); 
+
+deposit.addEventListener("click",function showPopup(){
+    // calling old deposit ammount 
+
+const oldDeposit=document.getElementById("deposit-amount").innerText;
+const oldDeposited =parseFloat(oldDeposit);
+
+
+
+// now calling input deposit 
+const depositAmount  =document.getElementById("input-deposit").value;
+const deposited =parseFloat(depositAmount);
+const popup = document.getElementById("popupBox");
+      const popupText = document.getElementById("popupText");
+      const extraContent = document.getElementById("extraContent");
+//  if user input 0 or none this section will be replied 
+if (isNaN(deposited)||deposited<=0) {
+          popupText.innerHTML = `Invalid Input!`;
+        extraContent.innerHTML = `<p>Please enter a <strong>valid</strong> deposit amount!</p><img src="icons8-docs-100.png" alt="Warning">`;
+        popup.style.display = "flex";
+        
+        depositAmount .value="";
+        return;
+        
+}
+
+if (isNaN(deposited)||deposited>=0) {
+          popupText.innerHTML = `<h3>Deposited Successfully</h3>`;
+        extraContent.innerHTML = `<p>Thank <strong>You</strong> For Depositing!</p><img src="icons8-docs-100.png" alt="Warning">`;
+        popup.style.display = "flex";
+        
+       
+    
+        
+}
+
+
+
+// total of deposit 
+const total= deposited+oldDeposited;
+
+document.getElementById("deposit-amount").innerText= total.toFixed(2) ;
+
+// calling balance
+const balanceOld =document.getElementById("balance-amount").innerText;
+const oldBalanceOk = parseFloat(balanceOld);
+
+const totalBalance= deposited +oldBalanceOk ;
+document.getElementById("balance-amount").innerText= totalBalance
+
+// moving input again null 
+document.getElementById("input-deposit").value= "";
+
+
+     
+
+})
+
+
+//    This is the Withdraw Section 
+
+const withdrawBtn =document.getElementById("withdraw-btn");
+
+    withdrawBtn.addEventListener("click",function(){
+        // callling old withdraw 
+
+const oldWithdraw=document.getElementById("withdraw-amount").innerText;
+const oldwithOk =parseFloat(oldWithdraw);
+// calling now input withdraw 
+
+const inputWithdraw=document.getElementById("input-withdraw").value;
+
+const newWithOk=parseFloat(inputWithdraw);
+//  if user input 0 or none this section will be replied 
+
+const popup = document.getElementById("popupBox");
+      const popupText = document.getElementById("popupText");
+      const extraContent = document.getElementById("extraContent");
+
+
+      if (isNaN(newWithOk)||newWithOk<=0) {
+          popupText.innerHTML = `Invalid Input!`;
+        extraContent.innerHTML = `<p>Please enter a <strong>valid</strong> deposit amount!</p><img src="icons8-docs-100.png" alt="Warning">`;
+        popup.style.display = "flex";
+        
+        oldWithdraw.value="";
+        return;
+        
+}
+// successfull
+if (isNaN(newWithOk)||newWithOk>=0) {
+          popupText.innerHTML = `<h3>Withdraw Successfully</h3>`;
+        extraContent.innerHTML = `<p>Thank <strong>You</strong> For Withdrawing!</p><img src="icons8-docs-100.png" alt="Succesfull">`;
+        popup.style.display = "flex";
+        
+       
+    
+        
+}
+
+
+const  totalWith= newWithOk+oldwithOk;
+document.getElementById("withdraw-amount").innerText= totalWith.toFixed(2);
+
+// again call balance 
+const balanceOld =document.getElementById("balance-amount").innerText;
+const oldBalanceOk = parseFloat(balanceOld);
+
+const totalBalance= oldBalanceOk -newWithOk;
+document.getElementById("balance-amount").innerText= totalBalance;
+
+
+    })
+
+  function closePopup() {
+      document.getElementById("popupBox").style.display = "none";
+    }
+
+    </script>
 </body>
 </html>
